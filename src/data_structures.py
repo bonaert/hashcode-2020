@@ -22,3 +22,4 @@ class ProblemInfo:
     libraries: List[Library]
     book_scores: List[int]
     num_days: int
+    book_frequency: List[int]

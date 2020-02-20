@@ -20,7 +20,17 @@ def read_input(filename: str) -> ProblemInfo:
                 Library(i_lib, sign_up_time, ship_per_day, books_in_lib)
             )
 
-    return ProblemInfo(libraries, book_scores, num_days)
+    book_frequency = [0] * len(book_scores)
+    for library in libraries:
+        for book in library.sorted_books_by_score:
+            book_frequency[book] += 1
+
+    for library in libraries:
+        books = library.sorted_books_by_score
+        sorted_books = sorted(books, key=lambda book: (book_scores[book], -book_frequency[book]), reverse=True)
+        library.sorted_books_by_score = sorted_books
+
+    return ProblemInfo(libraries, book_scores, num_days, book_frequency)
 
 
 if __name__ == '__main__':

@@ -9,10 +9,10 @@ for filename in ["a_example.txt", "b_read_on.txt", "c_incunabula.txt",
     scan_speed_times = [library.ship_per_day for library in problem_info.libraries]
     num_books = [len(library.sorted_books_by_score) for library in problem_info.libraries]
 
-    book_distribution = [0] * len(problem_info.book_scores)
+    book_frequency = [0] * len(problem_info.book_scores)
     for library in problem_info.libraries:
         for book in library.sorted_books_by_score:
-            book_distribution[book] += 1
+            book_frequency[book] += 1
 
     plt.figure()
     plt.hist(signup_times, bins=len(set(signup_times)))
@@ -27,7 +27,7 @@ for filename in ["a_example.txt", "b_read_on.txt", "c_incunabula.txt",
     plt.savefig(f"images/{filename}-numbooks.png")
 
     plt.figure()
-    plt.hist(book_distribution, bins=len(set(book_distribution)))
+    plt.hist(book_frequency, bins=len(set(book_frequency)))
     plt.savefig(f"images/{filename}-book_distribution.png")
 
     plt.figure()

@@ -37,26 +37,26 @@ Other approach:
 Look at it one day at the time. Each day, pick which books we will scan and, if it's possible, which library we will open.
 """
 
-def find_solutions(libraries: List[Library])
-while current_time < maxTime:
+def find_solutions(libraries: List[Library], book_scores: List[int]):
+    while current_time < maxTime:
 
-    # Choisir la bibliothèque qu'on va lire
-    best_score, best_library, best_books_to_scan = -1, -1, []
-    for library in remaining_libraries:
-        score, books_to_scan = get_score_and_books(library, books_already_scanned, maxTime - current_time - signup_time)
-        if score > best_score:
-            best_library = library
-            best_score = score
-            best_books_to_scan = books_to_scan
+        # Choisir la bibliothèque qu'on va lire
+        best_score, best_library, best_books_to_scan = -1, -1, []
+        for library in remaining_libraries:
+            score, books_to_scan = get_score_and_books(library, books_already_scanned, maxTime - current_time - signup_time)
+            if score > best_score:
+                best_library = library
+                best_score = score
+                best_books_to_scan = books_to_scan
 
-    books_already_scanned.add(best_books_to_scan)
+        books_already_scanned.add(best_books_to_scan)
 
-    solution.append(
-        LibraryScan(
-            best_library,
-            current_time,
-            best_books_to_scan
+        solution.append(
+            LibraryScan(
+                best_library,
+                current_time,
+                best_books_to_scan
+            )
         )
-    )
 
-    current_time += library.sign_up_time
+        current_time += library.sign_up_time

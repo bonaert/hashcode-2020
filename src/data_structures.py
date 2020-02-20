@@ -15,3 +15,10 @@ class Library:
     sign_up_time: int
     ship_per_day: int
     books: Set[int]
+
+
+@dataclass
+class ProblemInfo:
+    libraries: List[Library]
+    book_scores: List[int]
+    num_days: int

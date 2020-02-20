@@ -1,13 +1,11 @@
-from typing import Tuple, List
-
 from data_structures import Library, ProblemInfo
 
 
-def read_input(filename: str) -> Tuple[List[Library], List[int]]:
+def read_input(filename: str) -> ProblemInfo:
     libraries = []
     with open(filename, "r") as f:
         lines = f.readlines()
-        num_days = lines[0].split()[-1]
+        num_days = int(lines[0].split()[-1])
         num_libraries = int(lines[0].split(" ")[1])
         book_scores = list(map(int, lines[1].strip().split(" ")))
 
@@ -21,6 +19,7 @@ def read_input(filename: str) -> Tuple[List[Library], List[int]]:
             )
 
     return ProblemInfo(libraries, book_scores, num_days)
+
 
 if __name__ == '__main__':
     problemInfo = read_input("data/a_example.txt")

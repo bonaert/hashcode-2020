@@ -1,13 +1,6 @@
-from dataclasses import dataclass
-from typing import Set, List, Tuple
+from typing import Tuple, List
 
-
-@dataclass
-class Library:
-    id: int
-    sign_up_time: int
-    ship_per_day: int
-    books: Set[int]
+from src.data_structures import Library
 
 
 def read_input(filename: str) -> Tuple[List[Library], List[int]]:

@@ -37,6 +37,7 @@ Other approach:
 Look at it one day at the time. Each day, pick which books we will scan and, if it's possible, which library we will open.
 """
 
+def find_solutions(libraries: List[Library])
 while current_time < maxTime:
 
     # Choisir la bibliothèque qu'on va lire

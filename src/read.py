@@ -25,6 +25,9 @@ def read_input(filename: str) -> ProblemInfo:
         for book in library.sorted_books_by_score:
             book_frequency[book] += 1
 
+    for i in range(len(book_scores)):
+        book_scores[i] = book_scores[i] / (book_frequency[i] ** 0.5)
+
     for library in libraries:
         books = library.sorted_books_by_score
         sorted_books = sorted(books, key=lambda book: (book_scores[book], -book_frequency[book]), reverse=True)

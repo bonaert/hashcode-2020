@@ -1,6 +1,6 @@
 from typing import List
 
-from src.data_structures import LibraryScans
+from data_structures import LibraryScans
 
 
 def write_solution(ordered_solution: List[LibraryScans], filename: str):
@@ -11,9 +11,6 @@ def write_solution(ordered_solution: List[LibraryScans], filename: str):
             f.write(f"{library_scan.library_id} {len(library_scan.scanned_books)}\n")
             assert len(set(library_scan.scanned_books)) == len(library_scan.scanned_books), "Repeated books!"
             f.write(f"{' '.join(map(str, library_scan.scanned_books))}\n")
-
-
-
 
 
 if __name__ == '__main__':

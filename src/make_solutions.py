@@ -1,5 +1,5 @@
-from src.data_structures import LibraryScans
-from src.write import write_solution
+from data_structures import LibraryScans
+from write import write_solution
 
 
 def read_input(filename):

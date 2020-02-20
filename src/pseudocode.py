@@ -1,3 +1,7 @@
+from typing import List
+
+from data_structures import ProblemInfo, LibraryScans
+
 books_already_scanned = set()
 current_time = 0
 remaining_libraries = [0, 1, 2, 3]
@@ -28,7 +32,6 @@ def get_score_and_books(library, books_already_scanned, remaining_days):
     return best_books, total_score
 
 
-
 """
 Current approach:
 While there's still time, pick the library we're opening and the books we'll scan there
@@ -37,13 +40,15 @@ Other approach:
 Look at it one day at the time. Each day, pick which books we will scan and, if it's possible, which library we will open.
 """
 
-def find_solutions(libraries: List[Library], book_scores: List[int]):
-    while current_time < maxTime:
 
+def find_solutions(problem_info: ProblemInfo) -> List[LibraryScans]:
+    current_time = 0
+    while current_time < problem_info.num_days:
         # Choisir la bibliothèque qu'on va lire
         best_score, best_library, best_books_to_scan = -1, -1, []
         for library in remaining_libraries:
-            score, books_to_scan = get_score_and_books(library, books_already_scanned, maxTime - current_time - signup_time)
+            score, books_to_scan = get_score_and_books(library, books_already_scanned,
+                                                       problem_info.num_days - current_time - library.)
             if score > best_score:
                 best_library = library
                 best_score = score
@@ -52,11 +57,13 @@ def find_solutions(libraries: List[Library], book_scores: List[int]):
         books_already_scanned.add(best_books_to_scan)
 
         solution.append(
-            LibraryScan(
-                best_library,
-                current_time,
-                best_books_to_scan
+            LibraryScans(
+                library_id=best_library,
+                time_at_which_it_was_signed_up=current_time,
+                scanned_books=best_books_to_scan
             )
         )
 
         current_time += library.sign_up_time
+
+    return solution

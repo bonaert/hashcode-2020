@@ -14,7 +14,7 @@ def read_input(filename):
         for i_lib in range(num_librairies):
             line_num = start_lib_def + (i_lib * 2)
             num_book, sign_up_time, ship_per_day = lines[line_num].split() 
-            books_in_lib = lines[line_num + 1].split()
+            books_in_lib = set(lines[line_num + 1].split())
             librairies.append(Librairy(i_lib, sign_up_time, ship_per_day, books_in_lib))
             
     return librairies, book_scores

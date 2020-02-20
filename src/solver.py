@@ -55,7 +55,7 @@ def find_solution(problem_info: ProblemInfo) -> List[LibraryScans]:
         best_score, best_library, best_index, best_books_to_scan = -1, -1, 0, []
         for i, library in enumerate(remaining_libraries):
             # Not enough time to set up library
-            if library.sign_up_time < problem_info.num_days - current_time:
+            if library.sign_up_time > problem_info.num_days - current_time:
                 continue
 
             score, books_to_scan = get_score_and_books(problem_info, library, books_already_scanned,

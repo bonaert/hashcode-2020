@@ -7,7 +7,7 @@ def get_score_and_books(
         problem_info: ProblemInfo,
         library: Library,
         books_already_scanned: Set[int],
-        remaining_days: int) -> Tuple[int, List[int]]:
+        remaining_days: int) -> Tuple[float, List[int]]:
     # Pick which books we will scan. Balance between picking the highest value books and the books
     # that are unique to this library
 
@@ -35,7 +35,7 @@ def get_score_and_books(
     for book_to_delete in books_to_delete:
         library.sorted_books_by_score.remove(book_to_delete)
 
-    return total_score, best_books
+    return total_score / library.sign_up_time, best_books
 
 
 """

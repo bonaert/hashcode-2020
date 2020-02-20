@@ -14,7 +14,7 @@ class Library:
     id: int
     sign_up_time: int
     ship_per_day: int
-    books: Set[int]
+    sorted_books_by_score: List[int]
 
 
 @dataclass

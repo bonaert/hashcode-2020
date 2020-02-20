@@ -66,7 +66,7 @@ def find_solution(problem_info: ProblemInfo) -> List[LibraryScans]:
                 best_books_to_scan = books_to_scan
                 best_index = i
 
-        if best_score == -1:
+        if best_score == -1 or len(best_books_to_scan) == 0:
             break
 
         solution.append(

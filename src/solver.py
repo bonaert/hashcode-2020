@@ -35,7 +35,8 @@ def get_score_and_books(
     for book_to_delete in books_to_delete:
         library.sorted_books_by_score.remove(book_to_delete)
 
-    return total_score / library.sign_up_time, best_books
+    coeff = library.sign_up_time / (library.sign_up_time + remaining_days)
+    return total_score / coeff, best_books
 
 
 """

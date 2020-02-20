@@ -15,21 +15,21 @@ for filename in ["a_example.txt", "b_read_on.txt", "c_incunabula.txt",
             book_distribution[book] += 1
 
     plt.figure()
-    plt.hist(signup_times)
+    plt.hist(signup_times, bins=len(set(signup_times)))
     plt.savefig(f"images/{filename}-signuptimes.png")
 
     plt.figure()
-    plt.hist(scan_speed_times)
+    plt.hist(scan_speed_times, bins=len(set(scan_speed_times)))
     plt.savefig(f"images/{filename}-scanspeed.png")
 
     plt.figure()
-    plt.hist(num_books)
+    plt.hist(num_books, bins=len(set(num_books)))
     plt.savefig(f"images/{filename}-numbooks.png")
 
     plt.figure()
-    plt.hist(book_distribution)
+    plt.hist(book_distribution, bins=len(set(book_distribution)))
     plt.savefig(f"images/{filename}-book_distribution.png")
 
     plt.figure()
-    plt.hist(problem_info.book_scores)
+    plt.hist(problem_info.book_scores, bins=len(set(problem_info.book_scores)))
     plt.savefig(f"images/{filename}-book_scores.png")

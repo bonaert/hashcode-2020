@@ -20,6 +20,7 @@ def get_score_and_books(
     if max_books_we_can_scan == 0:
         return 0, []
 
+    books_to_delete = []
     for book in library.sorted_books_by_score:
         if book not in books_already_scanned:
             best_books.append(book)
@@ -28,6 +29,11 @@ def get_score_and_books(
 
             if num_scanned_books == max_books_we_can_scan:
                 break
+        else:
+            books_to_delete.append(book)
+
+    for book_to_delete in books_to_delete:
+        library.sorted_books_by_score.remove(book_to_delete)
 
     return total_score, best_books
 
@@ -87,6 +93,6 @@ def find_solution(problem_info: ProblemInfo) -> List[LibraryScans]:
             print(f"Added {step}-th library - Day {current_time} out of {problem_info.num_days} days")
         step += 1
 
-    print("Finished")
+    print(f"Finished - Day {current_time} out of {problem_info.num_days} days")
     print()
     return solution
